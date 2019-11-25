@@ -7,7 +7,7 @@ def list_all_js_function_names(path_to_js_file):
     #creating a list that will have lines with function names
     myfunctions=[]
 
-    
+
     #reading into the file    
     with open('script.js') as f:
         read_datalines =f.readlines()
@@ -31,6 +31,7 @@ def list_all_js_function_names(path_to_js_file):
     return names_list
 print(list_all_js_function_names('script.js'))   
   
+# if 'function' in line:
 
 # name_dict = {}
 # name_dict['name'] = arr
