@@ -1,5 +1,7 @@
+import re
 def list_all_js_function_names(path_to_js_file):
 
+    
     """
     path_to_js_file is a path to a file on your hard drive
     This function will read the entire input file and then return a list of js function names as strings
@@ -16,16 +18,56 @@ def list_all_js_function_names(path_to_js_file):
 
 
 #Reading only lines
-counter=0
+
 with open('script.js') as f:
     read_datalines =f.readlines() 
 
-for line in read_datalines:
-    if counter <2:
-        counter=counter+1
-        print(line,end='')
+# for line in read_datalines:
+    # if counter <2:
+        # counter=counter+1
+        # print(line,end='')
+
+myfunctions=[]
+
+with open('script.js') as f:
+
+    # for line in read_datalines: 
+        # str=read_datalines   
+        # x=re.findall('function',str)
+        # print(x)
+#using in a file and not a single defined string        
+
 
 #to print first two lines or specific lines then you must write a condition that will meet it    
   
 
+# with open('script.js') as f:
+    # read_datalines =f.readlines() 
 
+    for line in read_datalines:
+
+        # print(len(line.lstrip()))
+
+
+        if 'function' in line:
+            # line=line.split(' ')
+            myfunctions.append(line)
+            
+            
+            
+            #print(line)
+#print(myfunctions)        
+#now that I have the lines which have the function names I only want function names in a list
+names_list = []
+
+for each_item in myfunctions:
+
+    arr = (each_item.split("()")[0]
+    .split("=")[0]
+    .split("(")[0]
+    .split("function")[-1]
+    
+    )
+    names_list.append(arr)
+    #print(arr)
+print(names_list)    
