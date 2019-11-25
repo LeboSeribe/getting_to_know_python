@@ -1,73 +1,36 @@
 import re
 def list_all_js_function_names(path_to_js_file):
-
-    
     """
     path_to_js_file is a path to a file on your hard drive
     This function will read the entire input file and then return a list of js function names as strings
     """
-#reading into the file    
+    #creating a list that will have lines with function names
+    myfunctions=[]
 
-# with open('script.js') as f:
-    # read_data = f.read()
     
+    #reading into the file    
+    with open('script.js') as f:
+        read_datalines =f.readlines()
 
-#remember that f is closed but you stored it a variable called read_data
-#you have the data now that you can work with and not the file itself
-#read_data has read the file, you just have to call it
+    
+    for line in read_datalines:
+        if 'function' in line:
+            myfunctions.append(line)
+            # print(line)
+    # print(myfunctions)        
 
+    names_list = []
+    for each_item in myfunctions:
 
-#Reading only lines
-
-with open('script.js') as f:
-    read_datalines =f.readlines() 
-
-# for line in read_datalines:
-    # if counter <2:
-        # counter=counter+1
-        # print(line,end='')
-
-myfunctions=[]
-
-with open('script.js') as f:
-
-    # for line in read_datalines: 
-        # str=read_datalines   
-        # x=re.findall('function',str)
-        # print(x)
-#using in a file and not a single defined string        
-
-
-#to print first two lines or specific lines then you must write a condition that will meet it    
+        arr = (each_item.split("()")[0]
+        .split("=")[0]
+        .split("(")[0]
+        .split("function")[-1]
+        )
+        names_list.append(arr)
+    return names_list
+print(list_all_js_function_names('script.js'))   
   
 
-# with open('script.js') as f:
-    # read_datalines =f.readlines() 
-
-    for line in read_datalines:
-
-        # print(len(line.lstrip()))
-
-
-        if 'function' in line:
-            # line=line.split(' ')
-            myfunctions.append(line)
-            
-            
-            
-            #print(line)
-#print(myfunctions)        
-#now that I have the lines which have the function names I only want function names in a list
-names_list = []
-
-for each_item in myfunctions:
-
-    arr = (each_item.split("()")[0]
-    .split("=")[0]
-    .split("(")[0]
-    .split("function")[-1]
-    
-    )
-    names_list.append(arr)
-    #print(arr)
-print(names_list)    
+# name_dict = {}
+# name_dict['name'] = arr
