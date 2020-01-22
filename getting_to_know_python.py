@@ -9,16 +9,17 @@ def list_all_js_function_names(path_to_js_file):
     
     #reading into the file    
     with open('script.js') as f:
-        read_datalines =f.readlines()
+        read_datalines = f.readlines()
 
     dict_functions={}
     counter=0
     for line in read_datalines:
         counter+=1
         if 'function' in line:
-            names_list = []
+
             name=line.split("()")[0].split("=")[0].split("(")[0].split("function")[-1]
             dict_functions['name']=name
+            
         
     
             starting_line = counter
@@ -32,9 +33,11 @@ def list_all_js_function_names(path_to_js_file):
             myfunctions.append(dict_functions) 
             dict_functions={}
 
+    print(dict_functions)
+
     
     return myfunctions
-print(list_all_js_function_names('script.js'))   
+list_all_js_function_names('script.js')
   
 
 
